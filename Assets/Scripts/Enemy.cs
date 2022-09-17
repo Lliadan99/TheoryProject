@@ -4,15 +4,27 @@ using UnityEngine;
 
 public class Enemy : Human
 {
-    // Start is called before the first frame update
-    void Start()
+    private Vector3 _target;
+    private Vector3 _direction;
+    private float _step;
+
+
+    protected override void Move()
     {
-        
+        _target = GameObject.FindWithTag("Player").transform.position;
+        _step = MovementSpeed * SpeedModifier * Time.deltaTime;
+        _direction = _target - transform.position;
+        //transform.position = Vector3.MoveTowards(transform.position, _target, step);
+
+        if(_direction != Vector3.zero)
+        {
+            transform.rotation = Quaternion.LookRotation(_direction);
+        }
+        transform.position += transform.forward * _step;
     }
 
-    // Update is called once per frame
-    void Update()
+    private new void Update()
     {
-        
+        //Move();
     }
 }
