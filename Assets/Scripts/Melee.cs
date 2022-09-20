@@ -4,5 +4,8 @@ using UnityEngine;
 
 public class Melee : Enemy
 {
-
+    private void OnEnable()
+    {
+        ReEnable();
+    }
 }

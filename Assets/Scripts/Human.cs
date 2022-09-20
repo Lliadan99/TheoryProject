@@ -5,46 +5,55 @@ using UnityEngine;
 public abstract class Human : MonoBehaviour
 {
 
-    private float _health = 25.0f;
+    private float _maxHealth = 5.0f;
+    private float _currentHealth;
     private float _movementSpeed = 8.0f;
-    private float _speedModifier = 0.5f;
-    private float _rotationSpeed = 800.0f;
     private float _attackDamage = 5.0f;
     private bool _isAlive = true;
-
 
     public Human()
     {
     }
 
-    public float Health
+    public float MaxHealth
     {
-        get { return _health; }
+        get { return _maxHealth; }
+        set
+        {
+            if(value > 0 && value <50)
+            {
+                _maxHealth = value;
+            }
+        }
+    }
+    public float CurrentHealth
+    {
+        get { return _currentHealth; }
+        set
+        {
+            if(_currentHealth <= _maxHealth)
+            {
+                if (_currentHealth < 0)
+                {
+                    _currentHealth = 0;
+                }
+                _currentHealth = value;
+            }
+        }
     }
 
     public float MovementSpeed
     {
         get { return _movementSpeed; }
-    }
-
-    public float SpeedModifier
-    {
-        get { return _speedModifier; }
-        set 
+        set
         {
-            if(value>0 && value < 2)
+            if(value > 0 && value < 25)
             {
-                _speedModifier = value;
+                _movementSpeed = value;
             }
         }
     }
 
-    public float RotationSpeed
-    {
-        get { return _rotationSpeed; }
-        private set { }
-    }
-    
     public float AttackDamage
     {
         get {return _attackDamage; }
@@ -63,10 +72,10 @@ public abstract class Human : MonoBehaviour
         set { _isAlive = value; }
     }
 
-    protected void AdjustHealth(int damage)
+    public void AdjustHealth(float damage)
     {
-        _health -= damage;
-        if(_health <= 0)
+        _currentHealth -= damage;
+        if(_currentHealth <= 0)
         {
             _isAlive = false;
         }
@@ -79,25 +88,6 @@ public abstract class Human : MonoBehaviour
 
     protected virtual void Attack()
     {
-
-    }
-
-    protected virtual void Die()
-    {
-
-    }
-
-    protected virtual void Start()
-    {
-        
-    }
-
-    protected void Update()
-    {
-        if (!_isAlive)
-        {
-            Die();
-        }
 
     }
 }

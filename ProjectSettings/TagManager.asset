@@ -6,6 +6,10 @@ TagManager:
   tags:
   - Enemy
   - Muzzle
+  - PlayerBullet
+  - EnemyRanged
+  - EnemyMelee
+  - EnemyTank
   layers:
   - Default
   - TransparentFX

@@ -6,7 +6,11 @@ public class Ranged : Enemy
 {
     private void Awake()
     {
-        SpeedModifier = 0.6f;
+        MovementSpeed = MovementSpeed * 0.75f;
     }
 
+    private void OnEnable()
+    {
+        ReEnable();
+    }
 }

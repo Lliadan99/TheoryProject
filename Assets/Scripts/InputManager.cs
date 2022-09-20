@@ -9,8 +9,14 @@ public class InputManager : MonoBehaviour
     PlayerInput _playerInput = null;
 
     private Vector3 _inputVector;
+    private Vector3 _mousePos;
     private bool _attack = false;
-      
+
+    public Vector3 MousePos
+    {
+        get { return _mousePos; }
+    }
+
     public Vector3 InputVector
     {
         get { return _inputVector; }
@@ -63,6 +69,6 @@ public class InputManager : MonoBehaviour
 
     private void Update()
     {
-
+        _mousePos = Mouse.current.position.ReadValue();
     }
 }

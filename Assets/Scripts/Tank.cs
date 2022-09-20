@@ -6,6 +6,12 @@ public class Tank : Enemy
 {
     private void Awake()
     {
-        SpeedModifier = 0.2f;
+        MaxHealth *= 3;
+        MovementSpeed = MovementSpeed * 0.5f;
+    }
+
+    private void OnEnable()
+    {
+        ReEnable();
     }
 }
