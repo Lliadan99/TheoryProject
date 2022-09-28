@@ -12,16 +12,13 @@ public class Enemy : Human
         MovementSpeed = 6f;
     }
 
-    protected override void Move()
+    protected virtual void Update()
     {
-        _target = GameObject.FindWithTag("Player").transform.position;
-        _direction = _target - transform.position;
-
-        if(_direction != Vector3.zero)
+        if (!IsAlive)
         {
-            transform.rotation = Quaternion.LookRotation(_direction);
+            gameObject.SetActive(false);
         }
-        transform.position += transform.forward * MovementSpeed * Time.deltaTime;
+        Move();
     }
 
     protected virtual void ReEnable()
@@ -29,12 +26,15 @@ public class Enemy : Human
         CurrentHealth = MaxHealth;
         IsAlive = true;
     }
-    private void Update()
+
+    protected override void Move()
     {
-        if (!IsAlive)
+        _target = GameObject.FindWithTag("Player").transform.position;
+        _direction = _target - transform.position;
+        if (_direction != Vector3.zero)
         {
-            gameObject.SetActive(false);
+            transform.rotation = Quaternion.LookRotation(_direction);
         }
-        Move();
+        transform.position += transform.forward * MovementSpeed * Time.deltaTime;
     }
 }

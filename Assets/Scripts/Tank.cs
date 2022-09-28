@@ -6,7 +6,7 @@ public class Tank : Enemy
 {
     private void Awake()
     {
-        MaxHealth *= 3;
+        MaxHealth *= 4;
         MovementSpeed = MovementSpeed * 0.5f;
     }
 

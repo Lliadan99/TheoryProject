@@ -62,10 +62,6 @@ public class InputManager : MonoBehaviour
         _attack = ctx.ReadValueAsButton();
         
     }
-    private void Start()
-    {
-
-    }
 
     private void Update()
     {
