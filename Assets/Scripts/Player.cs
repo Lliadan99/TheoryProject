@@ -25,9 +25,10 @@ public class Player : Human
 
     private void Update()
     {
+        GameManager.SharedInstance.HeartDisplay(CurrentHealth);
+
         if (IsAlive)
         {
-            GameManager.SharedInstance.HeartDisplay(CurrentHealth);
             Move();
             fireWeaponDetails.AimWeapon(TargetMouse());
             FireWeapon();

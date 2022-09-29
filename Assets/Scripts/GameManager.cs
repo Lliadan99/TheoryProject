@@ -9,9 +9,11 @@ public class GameManager : MonoBehaviour
     public static GameManager SharedInstance;
     public bool gameOver = false;
     public TextMeshProUGUI score;
+    public GameObject gameOverUI;
+    public GameObject retry;
+    public GameObject quit;
     public GameObject player;
     public GameObject[] hearts;
-    private float healthCheck;
 
     private int _score = 0;
 
@@ -31,21 +33,24 @@ public class GameManager : MonoBehaviour
 
     private Vector3 _spawnPos;
 
+    private int _numberOfHearts;
+    private int _arrayLength;
+
     private void Awake()
     {
+        gameOverUI.SetActive(false);
         SharedInstance = this;
     }
 
     private void Start()
     {
-
         StartCoroutine(SpawnEnemies());
     }
     private void Update()
     {
         if (gameOver)
         {
-            //open game over screen
+            gameOverUI.SetActive(true);
         }
     }
     IEnumerator SpawnEnemies()
@@ -115,9 +120,9 @@ public class GameManager : MonoBehaviour
     }
     public void HeartDisplay(int health)
     {
-        int numberOfHearts = health / 5;
-        int lengthHearts = hearts.Length;
-        for(int i= lengthHearts; i> numberOfHearts; i--)
+        _numberOfHearts = health / 5;
+        _arrayLength = hearts.Length;
+        for(int i= _arrayLength; i> _numberOfHearts; i--)
         {
             hearts[i-1].SetActive(false);
         }
