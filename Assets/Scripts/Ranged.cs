@@ -6,15 +6,15 @@ using UnityEngine;
 public class Ranged : Enemy
 {
     public FireWeaponDetails fireWeaponDetails;
-    private GameObject _player;
     private float _rangedRateOfFire = 2f;
 
 
-    private void Awake()
+    protected override void Awake()
     {
-        _player = GameObject.FindWithTag("Player");
+        base.Awake();
         MovementSpeed = MovementSpeed * 0.3f;
         fireWeaponDetails.canFire = true;
+        PointValue = PointValue * 3;
     }
 
     private void OnEnable()
@@ -24,8 +24,11 @@ public class Ranged : Enemy
     protected override void Update()
     {
         base.Update();
-        fireWeaponDetails.AimWeapon(TargetPosition());
-        FireWeapon();
+        if (!GameManager.SharedInstance.gameOver)
+        {
+            fireWeaponDetails.AimWeapon(Target);
+            FireWeapon();
+        }
     }
 
     protected override void ReEnable()
@@ -33,10 +36,6 @@ public class Ranged : Enemy
         base.ReEnable();
         fireWeaponDetails.canFire = true;
         
-    }
-    private Vector3 TargetPosition()
-    {
-         return _player.transform.position;
     }
 
     private void FireWeapon()

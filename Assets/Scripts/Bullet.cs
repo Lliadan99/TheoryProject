@@ -5,7 +5,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     private float _speed = 25.0f;
-    private float _damage = 5f;
+    private int _damage = 5;
 
     public Bullet()
     {
@@ -23,7 +23,7 @@ public class Bullet : MonoBehaviour
         }
     }
 
-    public float Damage
+    public int Damage
     {
         get { return _damage; }
         set
@@ -44,6 +44,7 @@ public class Bullet : MonoBehaviour
     {
         transform.Translate(Vector3.right * _speed * Time.deltaTime);
     }
+
     protected virtual void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("EnemyRanged") || other.gameObject.CompareTag("EnemyTank") || other.gameObject.CompareTag("EnemyMelee"))

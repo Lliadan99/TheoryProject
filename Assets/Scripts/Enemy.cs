@@ -5,10 +5,30 @@ using UnityEngine;
 public class Enemy : Human
 {
     private Vector3 _target;
+    private int _pointValue = 20;
     private Vector3 _direction;
+    private GameObject _player;
 
-    private void Awake()
+
+    public Vector3 Target
     {
+        get { return _target; }
+    }
+    public int PointValue
+    {
+        get { return _pointValue; }
+        set
+        {
+            if (value > 0)
+            {
+                _pointValue = value;
+            }
+        }
+    }
+
+    protected virtual void Awake()
+    {
+        _player = GameObject.FindWithTag("Player");
         MovementSpeed = 6f;
     }
 
@@ -16,9 +36,13 @@ public class Enemy : Human
     {
         if (!IsAlive)
         {
+            GameManager.SharedInstance.UpdateScore(_pointValue);
             gameObject.SetActive(false);
         }
-        Move();
+        if (!GameManager.SharedInstance.gameOver)
+        {
+            Move();
+        }
     }
 
     protected virtual void ReEnable()
@@ -29,7 +53,7 @@ public class Enemy : Human
 
     protected override void Move()
     {
-        _target = GameObject.FindWithTag("Player").transform.position;
+        _target = _player.transform.position;
         _direction = _target - transform.position;
         if (_direction != Vector3.zero)
         {

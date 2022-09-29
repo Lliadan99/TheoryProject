@@ -12,6 +12,7 @@ TagManager:
   - EnemyTank
   - Boundary
   - EnemyBullet
+  - Score
   layers:
   - Default
   - TransparentFX

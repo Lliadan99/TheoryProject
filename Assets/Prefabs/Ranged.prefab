@@ -108,7 +108,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2240844212332945636}
-  - component: {fileID: 6368735412078958216}
   - component: {fileID: 5925857570446802988}
   m_Layer: 0
   m_Name: Aim
@@ -133,21 +132,6 @@ Transform:
   m_Father: {fileID: 2125179687746728494}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6368735412078958216
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2803792080967790761}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce7564f853d26de4ca43e22181b5a26c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _muzzle: {fileID: 8467958844719248781}
-  bullet: {fileID: 4214524134954255546, guid: a90828cc39c3d5e47be48d7e3a8e5c03, type: 3}
-  canFire: 1
 --- !u!114 &5925857570446802988
 MonoBehaviour:
   m_ObjectHideFlags: 0

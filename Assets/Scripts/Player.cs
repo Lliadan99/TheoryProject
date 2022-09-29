@@ -8,6 +8,7 @@ public class Player : Human
     public InputManager inputManager;
     public FireWeaponDetails fireWeaponDetails;
     public Camera mainCamera;
+    
 
     private Vector3 _mousePosition;
     private Plane _plane;
@@ -17,21 +18,24 @@ public class Player : Human
 
     private void Awake()
     {
-        MaxHealth = 15f;
+        MaxHealth = 15;
         CurrentHealth = MaxHealth;
         IsAlive = true;
     }
 
     private void Update()
     {
-        if (!IsAlive)
+        if (IsAlive)
         {
-            Debug.Log("you have died");
+            GameManager.SharedInstance.HeartDisplay(CurrentHealth);
+            Move();
+            fireWeaponDetails.AimWeapon(TargetMouse());
+            FireWeapon();
+        }
+        else
+        {
             GameManager.SharedInstance.gameOver = true;
         }
-        Move();
-        fireWeaponDetails.AimWeapon(TargetMouse());
-        FireWeapon();
     }
 
     protected override void Move()
@@ -67,6 +71,7 @@ public class Player : Human
         if (other.gameObject.CompareTag("EnemyRanged") || other.gameObject.CompareTag("EnemyTank") || other.gameObject.CompareTag("EnemyMelee"))
         {
             AdjustHealth(HitDamage);
+            other.gameObject.SetActive(false);
         }
     }
 }

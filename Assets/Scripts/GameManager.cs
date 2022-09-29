@@ -1,11 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager SharedInstance;
     public bool gameOver = false;
+    public TextMeshProUGUI score;
+    public GameObject player;
+    public GameObject[] hearts;
+    private float healthCheck;
+
+    private int _score = 0;
 
     private string _rangedTag = "EnemyRanged";
     private string _meleeTag = "EnemyMelee";
@@ -30,42 +38,21 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+
         StartCoroutine(SpawnEnemies());
     }
     private void Update()
     {
         if (gameOver)
         {
-
+            //open game over screen
         }
     }
-
-    private Vector3 SpawnPosition(int position)
-    {
-        if(position == 1)
-        {
-            return new Vector3(Random.Range(-_hX, _hX), 0, _hZ);
-        }
-        else if (position == 2)
-        {
-            return new Vector3(Random.Range(-_hX, _hX), 0, -_hZ);
-        }
-        else if(position == 3)
-        {
-            return new Vector3(-_vX, 0, Random.Range(-_vZ, _vZ));
-        }
-        else
-        {
-            return new Vector3(_vX, 0, Random.Range(-_vZ, _vZ));
-        }
-    }
-
     IEnumerator SpawnEnemies()
     {
-        if (!gameOver)
         {
             yield return new WaitForSeconds(_startWait);
-            while (true)
+            while (!gameOver)
             {
                 for (int i = 0; i < _enemiesPerWave; i++)
                 {
@@ -92,6 +79,26 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private Vector3 SpawnPosition(int position)
+    {
+        if(position == 1)
+        {
+            return new Vector3(Random.Range(-_hX, _hX), 0, _hZ);
+        }
+        else if (position == 2)
+        {
+            return new Vector3(Random.Range(-_hX, _hX), 0, -_hZ);
+        }
+        else if(position == 3)
+        {
+            return new Vector3(-_vX, 0, Random.Range(-_vZ, _vZ));
+        }
+        else
+        {
+            return new Vector3(_vX, 0, Random.Range(-_vZ, _vZ));
+        }
+    }
+
     private void GetEnemy(string tag)
     {
         GameObject enemy = ObjectPooler.SharedInstance.GetPooledObject(tag);
@@ -99,6 +106,20 @@ public class GameManager : MonoBehaviour
         {
             enemy.transform.position = _spawnPos;
             enemy.SetActive(true);
+        }
+    }
+    public void UpdateScore(int scoreToAdd)
+    {
+        _score += scoreToAdd;
+        score.text = ("" + _score);
+    }
+    public void HeartDisplay(int health)
+    {
+        int numberOfHearts = health / 5;
+        int lengthHearts = hearts.Length;
+        for(int i= lengthHearts; i> numberOfHearts; i--)
+        {
+            hearts[i-1].SetActive(false);
         }
     }
 }
