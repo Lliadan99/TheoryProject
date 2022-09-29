@@ -5,19 +5,53 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     private float _speed = 25.0f;
-    public float damage = 5f;
+    private int _damage = 5;
+
+    public Bullet()
+    {
+    }
+
+    public float Speed
+    {
+        get { return _speed; }
+        set
+        {
+            if (value > 0)
+            {
+                _speed = value;
+            }
+        }
+    }
+
+    public int Damage
+    {
+        get { return _damage; }
+        set
+        {
+            if (value > 0)
+            {
+                _damage = value;
+            }
+        }
+    }
 
     void Update()
     {
-        transform.Translate(new Vector3(1f, 0f, 0f) * _speed * Time.deltaTime);
+        BulletMove();
     }
 
-    private void OnTriggerEnter(Collider other)
+    protected virtual void BulletMove()
+    {
+        transform.Translate(Vector3.right * _speed * Time.deltaTime);
+    }
+
+    protected virtual void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("EnemyRanged") || other.gameObject.CompareTag("EnemyTank") || other.gameObject.CompareTag("EnemyMelee"))
         {
-            other.gameObject.GetComponent<Enemy>().AdjustHealth(5f);
+            other.gameObject.GetComponent<Enemy>().AdjustHealth(_damage);
             gameObject.SetActive(false);
         }
     }
+
 }

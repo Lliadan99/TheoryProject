@@ -1,27 +1,35 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager SharedInstance;
     public bool gameOver = false;
+    public TextMeshProUGUI score;
+    public GameObject player;
+    public GameObject[] hearts;
+    private float healthCheck;
 
-    private string rangedTag = "EnemyRanged";
-    private string meleeTag = "EnemyMelee";
-    private string tankTag = "EnemyTank";
+    private int _score = 0;
 
-    private float startWait = 1.0f;
-    private float waveInterval = 4.0f;
-    private float spawnInterval = 0.5f;
-    private int enemiesPerWave = 1;
+    private string _rangedTag = "EnemyRanged";
+    private string _meleeTag = "EnemyMelee";
+    private string _tankTag = "EnemyTank";
 
-    private float hX = 6.5f;
-    private float hZ = 15f;
-    private float vX = 24.5f;
-    private float vZ = 4.5f;
+    private float _startWait = 1.0f;
+    private float _waveInterval = 4.0f;
+    private float _spawnInterval = 0.5f;
+    private int _enemiesPerWave = 1;
 
-    private Vector3 spawnPos;
+    private float _hX = 6.5f;
+    private float _hZ = 15f;
+    private float _vX = 24.5f;
+    private float _vZ = 3.5f;
+
+    private Vector3 _spawnPos;
 
     private void Awake()
     {
@@ -30,13 +38,44 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+
         StartCoroutine(SpawnEnemies());
     }
     private void Update()
     {
         if (gameOver)
         {
-
+            //open game over screen
+        }
+    }
+    IEnumerator SpawnEnemies()
+    {
+        {
+            yield return new WaitForSeconds(_startWait);
+            while (!gameOver)
+            {
+                for (int i = 0; i < _enemiesPerWave; i++)
+                {
+                    float enemySelect = Random.Range(0.0f, 14f);
+                    int sp = Random.Range(0, 4);
+                    _spawnPos = SpawnPosition(sp);
+                    if (enemySelect < 5)
+                    {
+                        GetEnemy(_meleeTag);
+                    }
+                    else if (enemySelect >= 5 && enemySelect < 10)
+                    {
+                        GetEnemy(_tankTag);
+                    }
+                    else
+                    {
+                        GetEnemy(_rangedTag);
+                    }
+                    yield return new WaitForSeconds(_spawnInterval);
+                }
+                yield return new WaitForSeconds(_waveInterval);
+                _enemiesPerWave++;
+            }
         }
     }
 
@@ -44,51 +83,19 @@ public class GameManager : MonoBehaviour
     {
         if(position == 1)
         {
-            return new Vector3(Random.Range(-hX, hX), 0, hZ);
+            return new Vector3(Random.Range(-_hX, _hX), 0, _hZ);
         }
         else if (position == 2)
         {
-            return new Vector3(Random.Range(-hX, hX), 0, -hZ);
+            return new Vector3(Random.Range(-_hX, _hX), 0, -_hZ);
         }
         else if(position == 3)
         {
-            return new Vector3(-vX, 0, Random.Range(-vZ, vZ));
+            return new Vector3(-_vX, 0, Random.Range(-_vZ, _vZ));
         }
         else
         {
-            return new Vector3(vX, 0, Random.Range(-vZ, vZ));
-        }
-    }
-
-    IEnumerator SpawnEnemies()
-    {
-        if (!gameOver)
-        {
-            yield return new WaitForSeconds(startWait);
-            while (true)
-            {
-                for (int i = 0; i < enemiesPerWave; i++)
-                {
-                    float enemySelect = Random.Range(0.0f, 14f);
-                    int sp = Random.Range(0, 4);
-                    spawnPos = SpawnPosition(sp);
-                    if (enemySelect < 5)
-                    {
-                        GetEnemy(meleeTag);
-                    }
-                    else if (enemySelect >= 5 && enemySelect < 10)
-                    {
-                        GetEnemy(tankTag);
-                    }
-                    else
-                    {
-                        GetEnemy(rangedTag);
-                    }
-                    yield return new WaitForSeconds(spawnInterval);
-                }
-                yield return new WaitForSeconds(waveInterval);
-                enemiesPerWave++;
-            }
+            return new Vector3(_vX, 0, Random.Range(-_vZ, _vZ));
         }
     }
 
@@ -97,8 +104,22 @@ public class GameManager : MonoBehaviour
         GameObject enemy = ObjectPooler.SharedInstance.GetPooledObject(tag);
         if (enemy != null)
         {
-            enemy.transform.position = spawnPos;
+            enemy.transform.position = _spawnPos;
             enemy.SetActive(true);
+        }
+    }
+    public void UpdateScore(int scoreToAdd)
+    {
+        _score += scoreToAdd;
+        score.text = ("" + _score);
+    }
+    public void HeartDisplay(int health)
+    {
+        int numberOfHearts = health / 5;
+        int lengthHearts = hearts.Length;
+        for(int i= lengthHearts; i> numberOfHearts; i--)
+        {
+            hearts[i-1].SetActive(false);
         }
     }
 }

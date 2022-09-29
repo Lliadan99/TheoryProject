@@ -10,6 +10,9 @@ TagManager:
   - EnemyRanged
   - EnemyMelee
   - EnemyTank
+  - Boundary
+  - EnemyBullet
+  - Score
   layers:
   - Default
   - TransparentFX

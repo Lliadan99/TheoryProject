@@ -4,18 +4,17 @@ using UnityEngine;
 
 public abstract class Human : MonoBehaviour
 {
-
-    private float _maxHealth = 5.0f;
-    private float _currentHealth;
+    private int _maxHealth = 5;
+    private int _currentHealth;
     private float _movementSpeed = 8.0f;
-    private float _attackDamage = 5.0f;
+    private int _hitDamage = 5;
     private bool _isAlive = true;
 
     public Human()
     {
     }
 
-    public float MaxHealth
+    public int MaxHealth
     {
         get { return _maxHealth; }
         set
@@ -26,7 +25,7 @@ public abstract class Human : MonoBehaviour
             }
         }
     }
-    public float CurrentHealth
+    public int CurrentHealth
     {
         get { return _currentHealth; }
         set
@@ -54,14 +53,14 @@ public abstract class Human : MonoBehaviour
         }
     }
 
-    public float AttackDamage
+    public int HitDamage
     {
-        get {return _attackDamage; }
+        get {return _hitDamage; }
         set
         {
             if(value > 0 && value < 25)
             {
-                _attackDamage = value;
+                _hitDamage = value;
             }
         }
     }
@@ -72,7 +71,7 @@ public abstract class Human : MonoBehaviour
         set { _isAlive = value; }
     }
 
-    public void AdjustHealth(float damage)
+    public void AdjustHealth(int damage)
     {
         _currentHealth -= damage;
         if(_currentHealth <= 0)
@@ -82,11 +81,6 @@ public abstract class Human : MonoBehaviour
     }
 
     protected virtual void Move()
-    {
-
-    }
-
-    protected virtual void Attack()
     {
 
     }

@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class Tank : Enemy
 {
-    private void Awake()
+    protected override void Awake()
     {
-        MaxHealth *= 3;
+        base.Awake();
+        MaxHealth *= 4;
         MovementSpeed = MovementSpeed * 0.5f;
+        PointValue = PointValue * 2;
     }
 
     private void OnEnable()

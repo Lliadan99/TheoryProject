@@ -5,23 +5,44 @@ using UnityEngine;
 public class Enemy : Human
 {
     private Vector3 _target;
+    private int _pointValue = 20;
     private Vector3 _direction;
+    private GameObject _player;
 
-    private void Awake()
+
+    public Vector3 Target
     {
+        get { return _target; }
+    }
+    public int PointValue
+    {
+        get { return _pointValue; }
+        set
+        {
+            if (value > 0)
+            {
+                _pointValue = value;
+            }
+        }
+    }
+
+    protected virtual void Awake()
+    {
+        _player = GameObject.FindWithTag("Player");
         MovementSpeed = 6f;
     }
 
-    protected override void Move()
+    protected virtual void Update()
     {
-        _target = GameObject.FindWithTag("Player").transform.position;
-        _direction = _target - transform.position;
-
-        if(_direction != Vector3.zero)
+        if (!IsAlive)
         {
-            transform.rotation = Quaternion.LookRotation(_direction);
+            GameManager.SharedInstance.UpdateScore(_pointValue);
+            gameObject.SetActive(false);
         }
-        transform.position += transform.forward * MovementSpeed * Time.deltaTime;
+        if (!GameManager.SharedInstance.gameOver)
+        {
+            Move();
+        }
     }
 
     protected virtual void ReEnable()
@@ -29,12 +50,15 @@ public class Enemy : Human
         CurrentHealth = MaxHealth;
         IsAlive = true;
     }
-    private void Update()
+
+    protected override void Move()
     {
-        if (!IsAlive)
+        _target = _player.transform.position;
+        _direction = _target - transform.position;
+        if (_direction != Vector3.zero)
         {
-            gameObject.SetActive(false);
+            transform.rotation = Quaternion.LookRotation(_direction);
         }
-        Move();
+        transform.position += transform.forward * MovementSpeed * Time.deltaTime;
     }
 }
