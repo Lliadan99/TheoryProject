@@ -8,7 +8,6 @@ public class Player : Human
     public InputManager inputManager;
     public FireWeaponDetails fireWeaponDetails;
     public Camera mainCamera;
-    
 
     private Vector3 _mousePosition;
     private Plane _plane;
@@ -20,7 +19,7 @@ public class Player : Human
 
     private void Awake()
     {
-        MaxHealth = 15;
+        MaxHealth *= 3;
         CurrentHealth = MaxHealth;
         IsAlive = true;
     }

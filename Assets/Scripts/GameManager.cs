@@ -35,6 +35,7 @@ public class GameManager : MonoBehaviour
 
     private int _numberOfHearts;
     private int _arrayLength;
+    private int _heartValue = 5;
 
     private void Awake()
     {
@@ -46,6 +47,7 @@ public class GameManager : MonoBehaviour
     {
         StartCoroutine(SpawnEnemies());
     }
+
     private void Update()
     {
         if (gameOver)
@@ -53,6 +55,7 @@ public class GameManager : MonoBehaviour
             gameOverUI.SetActive(true);
         }
     }
+
     IEnumerator SpawnEnemies()
     {
         {
@@ -113,14 +116,16 @@ public class GameManager : MonoBehaviour
             enemy.SetActive(true);
         }
     }
+
     public void UpdateScore(int scoreToAdd)
     {
         _score += scoreToAdd;
         score.text = ("" + _score);
     }
+
     public void HeartDisplay(int health)
     {
-        _numberOfHearts = health / 5;
+        _numberOfHearts = health / _heartValue;
         _arrayLength = hearts.Length;
         for(int i= _arrayLength; i> _numberOfHearts; i--)
         {

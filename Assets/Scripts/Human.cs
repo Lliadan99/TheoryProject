@@ -19,12 +19,17 @@ public abstract class Human : MonoBehaviour
         get { return _maxHealth; }
         set
         {
-            if(value > 0 && value <50)
+            if(value > 0 && value % 5 ==0)
             {
                 _maxHealth = value;
             }
+            else
+            {
+                Debug.Log("error MaxHealth");
+            }
         }
     }
+
     public int CurrentHealth
     {
         get { return _currentHealth; }

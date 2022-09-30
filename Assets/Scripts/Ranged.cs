@@ -2,12 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
 public class Ranged : Enemy
 {
     public FireWeaponDetails fireWeaponDetails;
     private float _rangedRateOfFire = 2f;
-
 
     protected override void Awake()
     {
