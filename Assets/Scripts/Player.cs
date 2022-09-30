@@ -16,6 +16,8 @@ public class Player : Human
     private float _direction;
     private float _playerRateOfFire = 0.2f;
 
+    public bool lastHeart = false;
+
     private void Awake()
     {
         MaxHealth = 15;
@@ -25,16 +27,20 @@ public class Player : Human
 
     private void Update()
     {
-        GameManager.SharedInstance.HeartDisplay(CurrentHealth);
-
         if (IsAlive)
         {
             Move();
             fireWeaponDetails.AimWeapon(TargetMouse());
             FireWeapon();
+            GameManager.SharedInstance.HeartDisplay(CurrentHealth);
         }
         else
         {
+            if (!lastHeart)
+            {
+                GameManager.SharedInstance.HeartDisplay(CurrentHealth);
+                lastHeart = true;
+            }
             GameManager.SharedInstance.gameOver = true;
         }
     }

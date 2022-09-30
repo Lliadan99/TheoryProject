@@ -649,7 +649,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1100462877}
-        m_TargetAssemblyTypeName: MenuUI, Assembly-CSharp
+        m_TargetAssemblyTypeName: UI, Assembly-CSharp
         m_MethodName: ExitButton
         m_Mode: 1
         m_Arguments:
@@ -946,7 +946,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1100462872}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d31fa7b6e71ee0c4e9d86055b0b7a019, type: 3}
+  m_Script: {fileID: 11500000, guid: a67628bbbf3f42a498bef692089fd1e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1261505064
@@ -1118,7 +1118,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1100462877}
-        m_TargetAssemblyTypeName: MenuUI, Assembly-CSharp
+        m_TargetAssemblyTypeName: UI, Assembly-CSharp
         m_MethodName: StartButton
         m_Mode: 1
         m_Arguments:

@@ -192,7 +192,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5e4bd09426fbf2b45aec1dc424429e96, type: 2}
+  - {fileID: 2100000, guid: 3f1dd71d6b7db764d87537391278b069, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -274,7 +274,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5e4bd09426fbf2b45aec1dc424429e96, type: 2}
+  - {fileID: 2100000, guid: 67248d4dd03bb0c4ea8fd595d903a841, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -679,7 +679,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5e4bd09426fbf2b45aec1dc424429e96, type: 2}
+  - {fileID: 2100000, guid: 67248d4dd03bb0c4ea8fd595d903a841, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -809,7 +809,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 661612876}
-        m_TargetAssemblyTypeName: MenuUI, Assembly-CSharp
+        m_TargetAssemblyTypeName: UI, Assembly-CSharp
         m_MethodName: StartButton
         m_Mode: 1
         m_Arguments:
@@ -986,7 +986,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5e4bd09426fbf2b45aec1dc424429e96, type: 2}
+  - {fileID: 2100000, guid: 67248d4dd03bb0c4ea8fd595d903a841, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1301,7 +1301,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 661612871}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d31fa7b6e71ee0c4e9d86055b0b7a019, type: 3}
+  m_Script: {fileID: 11500000, guid: a67628bbbf3f42a498bef692089fd1e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &661677180
@@ -1356,7 +1356,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5e4bd09426fbf2b45aec1dc424429e96, type: 2}
+  - {fileID: 2100000, guid: 67248d4dd03bb0c4ea8fd595d903a841, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1469,6 +1469,7 @@ MonoBehaviour:
   inputManager: {fileID: 1599250617}
   fireWeaponDetails: {fileID: 1660332537}
   mainCamera: {fileID: 1810810583}
+  lastHeart: 0
 --- !u!65 &820143493
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1840,7 +1841,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5e4bd09426fbf2b45aec1dc424429e96, type: 2}
+  - {fileID: 2100000, guid: 67248d4dd03bb0c4ea8fd595d903a841, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1952,7 +1953,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5e4bd09426fbf2b45aec1dc424429e96, type: 2}
+  - {fileID: 2100000, guid: 3f1dd71d6b7db764d87537391278b069, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2067,7 +2068,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 661612876}
-        m_TargetAssemblyTypeName: MenuUI, Assembly-CSharp
+        m_TargetAssemblyTypeName: UI, Assembly-CSharp
         m_MethodName: ExitButton
         m_Mode: 1
         m_Arguments:
@@ -2479,7 +2480,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5e4bd09426fbf2b45aec1dc424429e96, type: 2}
+  - {fileID: 2100000, guid: 67248d4dd03bb0c4ea8fd595d903a841, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2889,7 +2890,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5e4bd09426fbf2b45aec1dc424429e96, type: 2}
+  - {fileID: 2100000, guid: 67248d4dd03bb0c4ea8fd595d903a841, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2986,7 +2987,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5e4bd09426fbf2b45aec1dc424429e96, type: 2}
+  - {fileID: 2100000, guid: 67248d4dd03bb0c4ea8fd595d903a841, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3084,7 +3085,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 3f1dd71d6b7db764d87537391278b069, type: 2}
+  - {fileID: 2100000, guid: 5049022db929d0e4785aa369600c6bc4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
