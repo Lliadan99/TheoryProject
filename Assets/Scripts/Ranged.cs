@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// INHERITANCE
 public class Ranged : Enemy
 {
     public FireWeaponDetails fireWeaponDetails;
     private float _rangedRateOfFire = 2f;
 
+    // POLYMORPHISM
     protected override void Awake()
     {
         base.Awake();
@@ -19,6 +21,8 @@ public class Ranged : Enemy
     {
         ReEnable();
     }
+
+    // POLYMORPHISM
     protected override void Update()
     {
         base.Update();
@@ -29,6 +33,7 @@ public class Ranged : Enemy
         }
     }
 
+    // POLYMORPHISM
     protected override void ReEnable()
     {
         base.ReEnable();

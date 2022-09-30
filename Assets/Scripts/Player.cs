@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
+// INHERITANCE
 public class Player : Human
 {
     public InputManager inputManager;
@@ -44,6 +44,7 @@ public class Player : Human
         }
     }
 
+    // POLYMORPHISM
     protected override void Move()
     {
         transform.position = transform.position + new Vector3(inputManager.InputVector.x * MovementSpeed * Time.deltaTime, 0, inputManager.InputVector.y * MovementSpeed * Time.deltaTime);

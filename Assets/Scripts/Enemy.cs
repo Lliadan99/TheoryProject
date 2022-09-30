@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// INHERITANCE
 public class Enemy : Human
 {
     private Vector3 _target;
@@ -9,7 +10,7 @@ public class Enemy : Human
     private Vector3 _direction;
     private GameObject _player;
 
-
+    // ENCAPSULATION
     public Vector3 Target
     {
         get { return _target; }
@@ -51,6 +52,7 @@ public class Enemy : Human
         IsAlive = true;
     }
 
+    // POLYMORPHISM
     protected override void Move()
     {
         _target = _player.transform.position;

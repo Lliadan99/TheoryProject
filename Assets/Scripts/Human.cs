@@ -14,6 +14,7 @@ public abstract class Human : MonoBehaviour
     {
     }
 
+    // ENCAPSULATION
     public int MaxHealth
     {
         get { return _maxHealth; }

@@ -107,6 +107,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    // ABSTRACTION
     private void GetEnemy(string tag)
     {
         GameObject enemy = ObjectPooler.SharedInstance.GetPooledObject(tag);

@@ -13,6 +13,7 @@ public class FireWeaponDetails : MonoBehaviour
 
     public bool canFire = true;
 
+    // ABSTRACTION
     public void AimWeapon(Vector3 target)
     {
         _rotation = target - transform.position;
@@ -30,6 +31,7 @@ public class FireWeaponDetails : MonoBehaviour
         transform.localScale = _weaponAngle;
     }
 
+    // ABSTRACTION
     public void Fire(string tag, float fireRate)
     {
         GameObject bullet = ObjectPooler.SharedInstance.GetPooledObject(tag);

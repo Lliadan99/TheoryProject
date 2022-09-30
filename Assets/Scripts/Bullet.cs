@@ -11,6 +11,7 @@ public class Bullet : MonoBehaviour
     {
     }
 
+    // ENCAPSULATION
     public float Speed
     {
         get { return _speed; }
