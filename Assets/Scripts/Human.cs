@@ -77,6 +77,11 @@ public abstract class Human : MonoBehaviour
         set { _isAlive = value; }
     }
 
+    protected virtual void Move()
+    {
+
+    }
+
     public void AdjustHealth(int damage)
     {
         _currentHealth -= damage;
@@ -86,8 +91,4 @@ public abstract class Human : MonoBehaviour
         }
     }
 
-    protected virtual void Move()
-    {
-
-    }
 }

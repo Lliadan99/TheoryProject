@@ -87,6 +87,16 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    // ABSTRACTION
+    private void GetEnemy(string tag)
+    {
+        GameObject enemy = ObjectPooler.SharedInstance.GetPooledObject(tag);
+        if (enemy != null)
+        {
+            enemy.transform.position = _spawnPos;
+            enemy.SetActive(true);
+        }
+    }
     private Vector3 SpawnPosition(int position)
     {
         if(position == 1)
@@ -104,17 +114,6 @@ public class GameManager : MonoBehaviour
         else
         {
             return new Vector3(_vX, 0, Random.Range(-_vZ, _vZ));
-        }
-    }
-
-    // ABSTRACTION
-    private void GetEnemy(string tag)
-    {
-        GameObject enemy = ObjectPooler.SharedInstance.GetPooledObject(tag);
-        if (enemy != null)
-        {
-            enemy.transform.position = _spawnPos;
-            enemy.SetActive(true);
         }
     }
 
